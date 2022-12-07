@@ -32,7 +32,14 @@ public class Keyboard : MonoBehaviour
 		{
 			if (child.name == upperKey)
 			{
-				child.gameObject.GetComponent<KeyboardKey>().color = color;
+				var key = child.gameObject.GetComponent<KeyboardKey>();
+
+				if (key.isGreen)
+				{
+					break;
+				}
+
+				key.color = color;
 				break;
 			}
 		}

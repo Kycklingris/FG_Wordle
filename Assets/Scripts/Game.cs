@@ -146,6 +146,8 @@ public class Game : MonoBehaviour
 			currentIndex++;
 		}
 
+		var greenKeys = new List<string>();
+
 		for (int i = 0; i < 5; i++)
 		{
 			Color color = Colors.white;

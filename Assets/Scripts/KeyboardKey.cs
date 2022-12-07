@@ -8,10 +8,24 @@ public class KeyboardKey : MonoBehaviour
 	private Image _image;
 	private Keyboard keyboard;
 
+	public bool isGreen = false;
+
 	public Color color
 	{
 		get { return this._image.color; }
-		set { this._image.color = value; }
+		set
+		{
+			if (value == Colors.green)
+			{
+				this.isGreen = true;
+			}
+			else
+			{
+				this.isGreen = false;
+			}
+
+			this._image.color = value;
+		}
 	}
 
 	private void Awake()
