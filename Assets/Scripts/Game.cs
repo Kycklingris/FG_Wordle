@@ -2,10 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+
 
 public class Game : MonoBehaviour
 {
 	[SerializeField] private Keyboard keyboard;
+	[SerializeField] private GameObject defeatScreen;
+	[SerializeField] private GameObject winScreen;
+	[SerializeField] private TextMeshProUGUI defeatWord;
+
 	private GridPiece[,] grid = new GridPiece[5, 5];
 
 	private int currentWordIndex = 0;
@@ -22,6 +28,8 @@ public class Game : MonoBehaviour
 	public void ResetBoard()
 	{
 		this.keyboard.ResetBoard();
+		this.defeatScreen.SetActive(false);
+		this.winScreen.SetActive(false);
 
 		this.currentLetterIndex = 0;
 		this.currentWordIndex = 0;
@@ -61,6 +69,8 @@ public class Game : MonoBehaviour
 
 			i++;
 		}
+
+		Debug.Log(this.correctWord);
 	}
 
 	public void KeyPressed(string input)
@@ -170,14 +180,13 @@ public class Game : MonoBehaviour
 
 	public void Defeat()
 	{
-		Debug.Log("Defeat");
-		this.ResetBoard();
+		this.defeatWord.text = this.correctWord;
+		this.defeatScreen.SetActive(true);
 	}
 
 	public void Win()
 	{
-		Debug.Log("Win");
-		this.ResetBoard();
+		this.winScreen.SetActive(true);
 	}
 }
 

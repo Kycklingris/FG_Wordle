@@ -6,13 +6,13 @@ using TMPro;
 
 public class GridPiece : MonoBehaviour
 {
-	private Color _color;
+	private Image _image;
 	private TextMeshProUGUI _text;
 
 	public Color color
 	{
-		get { return this._color; }
-		set { this._color = value; }
+		get { return this._image.color; }
+		set { this._image.color = value; }
 	}
 
 	public string letter
@@ -23,7 +23,7 @@ public class GridPiece : MonoBehaviour
 
 	void Awake()
 	{
-		this._color = this.gameObject.GetComponent<Image>().color;
+		this._image = this.gameObject.GetComponent<Image>();
 		this._text = this.gameObject.GetComponentInChildren<TextMeshProUGUI>();
 	}
 }
